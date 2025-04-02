@@ -19,7 +19,8 @@ A React application for exploring and managing user profiles with map integratio
 ## Demo
 # Landing Page
 
-![image](https://github.com/user-attachments/assets/25e3bf5e-4ab6-444b-9ab2-1f6015053221)
+![image](https://github.com/user-attachments/assets/5a80d915-ea34-4d8b-8308-b5f4fcbbeaf6)
+
 
 # Profile Section 
 Where it shows the Users Profile and By clicking Summary you can view their Location in Map
