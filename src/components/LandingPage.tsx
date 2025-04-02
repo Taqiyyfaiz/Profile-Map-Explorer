@@ -92,7 +92,7 @@ export const LandingPage: React.FC = () => {
                 </div>
                 <div className="aspect-[16/9] bg-gray-200 rounded-b-lg overflow-hidden">
                   <img 
-                    src="https://via.placeholder.com/800x450?text=Map+View" 
+                    src="https://img.freepik.com/free-vector/illustration-diverse-people_53876-28459.jpg?t=st=1743602824~exp=1743606424~hmac=95cb8ec633c6f021debe75292580a1b0574fa06d5367b7633391752e2e084077&w=900" 
                     alt="Application preview" 
                     className="w-full h-full object-cover"
                   />
