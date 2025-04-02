@@ -19,12 +19,17 @@ A React application for exploring and managing user profiles with Mapbox integra
 
 ## Demo
 # Landing Page
-![Screenshot 2025-04-02 142304](https://github.com/user-attachments/assets/acbad7e6-29b6-4d26-b8f8-d8a0e8df455f)
+
+![image](https://github.com/user-attachments/assets/25e3bf5e-4ab6-444b-9ab2-1f6015053221)
+
 # Profile Section 
 Where it shows the Users Profile and By clicking Summary you can view their Location in Map
-![Screenshot 2025-04-02 142325](https://github.com/user-attachments/assets/e1fcdbc9-9e17-47ff-81b4-f63176441b31)
+
+![image](https://github.com/user-attachments/assets/e3736b68-c274-46fd-b028-f87455be0d74)
+
 # Profile Management 
 Admin can able to do CRED operations like creating, Reading, Editing and Deleting the profile.
+
 ![Screenshot 2025-04-02 142338](https://github.com/user-attachments/assets/71c85b89-79e8-4f2b-9e0c-304af07602f3)
 
 
