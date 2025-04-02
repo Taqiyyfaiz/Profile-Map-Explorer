@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Users, Map, Database, Globe, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { ThemeToggle } from './ThemeToggle';
+import { Footer } from './Footer';
 
 export const LandingPage: React.FC = () => {
   const { theme } = useTheme();
@@ -24,14 +25,11 @@ export const LandingPage: React.FC = () => {
             </div>
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              <Link to="/login" className={`text-sm font-medium ${
-                isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}>Log in</Link>
               <Link 
-                to="/signup" 
+                to="/explore" 
                 className="text-sm font-medium px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors btn-grow"
               >
-                Sign up
+                Admin
               </Link>
             </div>
           </div>
@@ -63,16 +61,6 @@ export const LandingPage: React.FC = () => {
                   className="px-6 py-3 text-center bg-blue-500 text-white rounded-md text-lg font-medium hover:bg-blue-600 transition-colors btn-pulse"
                 >
                   Start Exploring
-                </Link>
-                <Link 
-                  to="/demo" 
-                  className={`px-6 py-3 text-center rounded-md text-lg font-medium flex items-center justify-center btn-bounce ${
-                    isDark 
-                      ? 'bg-gray-800 text-white hover:bg-gray-700' 
-                      : 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-300'
-                  }`}
-                >
-                  Watch Demo
                 </Link>
               </div>
             </div>
@@ -181,6 +169,9 @@ export const LandingPage: React.FC = () => {
           </Link>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

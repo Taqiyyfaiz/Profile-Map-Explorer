@@ -11,6 +11,7 @@ interface ProfileCardProps {
   isAdmin?: boolean;
   onEdit?: (profile: Profile) => void;
   onDelete?: (id: number) => void;
+  onViewMap?: (profile: Profile) => void;
 }
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({ 
@@ -19,7 +20,8 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   onClick, 
   isAdmin,
   onEdit,
-  onDelete 
+  onDelete,
+  onViewMap 
 }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -60,7 +62,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
                 Summary
               </button>
               <button
-                onClick={onClick}
+                onClick={() => onViewMap ? onViewMap(profile) : null}
                 className="px-3 py-1 text-sm bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
               >
                 View on Map

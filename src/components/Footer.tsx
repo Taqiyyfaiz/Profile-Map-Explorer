@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             <p className={`flex items-center text-sm mt-3 ${
               isDark ? 'text-gray-300' : 'text-gray-600'
             }`}>
-              Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by the Profile Map Team
+              Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by Taqiyy Faiz
             </p>
           </div>
           
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
             }`}>Connect with us</h4>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com" 
+                href="https://github.com/Taqiyyfaiz" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={`${
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://x.com/taqi_faiz_dev" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={`${
@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
                 <Twitter className="w-5 h-5" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/taqiyy-faiz/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={`${
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:contact@profilemap.example" 
+                href="mailto:taqiyyfaiz.official@gmail.com" 
                 className={`${
                   isDark 
                     ? 'text-gray-300 hover:text-blue-400' 

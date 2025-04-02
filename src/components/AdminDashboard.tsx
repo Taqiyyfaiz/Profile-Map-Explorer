@@ -5,6 +5,7 @@ import { ProfileForm } from './ProfileForm';
 import { Profile } from '../types';
 import { LoadingSpinner } from './LoadingSpinner';
 import { useTheme } from '../contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 interface AdminDashboardProps {
   profiles: Profile[];
@@ -16,8 +17,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ profiles, setPro
   const [editingProfile, setEditingProfile] = useState<Profile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const navigate = useNavigate();
 
   const handleSave = (profile: Profile) => {
     setIsLoading(true);
@@ -71,6 +74,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ profiles, setPro
   const handleEdit = (profile: Profile) => {
     setEditingProfile(profile);
     setIsFormOpen(true);
+  };
+
+  const handleViewSummary = (profile: Profile) => {
+    setSelectedProfile(profile);
+  };
+
+  const handleViewOnMap = (profile: Profile) => {
+    // Navigate to the map page with the profile ID as a query parameter
+    navigate(`/explore?profileId=${profile.id}`);
   };
 
   return (
@@ -128,6 +140,81 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ profiles, setPro
         </div>
       )}
 
+      {/* Profile Summary Modal */}
+      {selectedProfile && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className={`rounded-lg p-6 w-full max-w-2xl ${
+            isDark ? 'bg-gray-800' : 'bg-white'
+          }`}>
+            <h2 className={`text-xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Profile Summary</h2>
+            
+            <div className={`p-4 rounded-lg ${
+              isDark ? 'bg-gray-700' : 'bg-gray-100'
+            }`}>
+              <div className="flex items-center mb-4">
+                <img 
+                  src={selectedProfile.avatar} 
+                  alt={selectedProfile.name}
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h3 className={`font-semibold text-lg ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>{selectedProfile.name}</h3>
+                  <p className={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                    {selectedProfile.email}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <p><strong>Address:</strong> {selectedProfile.address.street}, {selectedProfile.address.city}, {selectedProfile.address.state}, {selectedProfile.address.zipCode}</p>
+                <p><strong>Phone:</strong> {selectedProfile.phone || 'N/A'}</p>
+                <p><strong>Website:</strong> {selectedProfile.website || 'N/A'}</p>
+                <p><strong>Bio:</strong> {selectedProfile.bio}</p>
+                <div>
+                  <strong>Interests:</strong> 
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {selectedProfile.interests?.map((interest, index) => (
+                      <span 
+                        key={index} 
+                        className={isDark 
+                          ? 'px-2 py-1 bg-gray-600 text-gray-300 text-xs rounded-full'
+                          : 'px-2 py-1 bg-gray-200 text-gray-700 text-xs rounded-full'
+                        }
+                      >
+                        {interest}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex justify-between mt-6">
+              <button
+                onClick={() => handleViewOnMap(selectedProfile)}
+                className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+              >
+                View on Map
+              </button>
+              <button
+                onClick={() => setSelectedProfile(null)}
+                className={`px-4 py-2 rounded-md ${
+                  isDark 
+                    ? 'bg-gray-700 text-white hover:bg-gray-600' 
+                    : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                }`}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {profiles.length === 0 ? (
         <div className={`rounded-lg shadow-md p-8 text-center ${
           isDark ? 'bg-gray-800' : 'bg-white'
@@ -142,11 +229,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ profiles, setPro
             <ProfileCard
               key={profile.id}
               profile={profile}
-              isSelected={false}
-              onClick={() => {}}
+              isSelected={selectedProfile?.id === profile.id}
+              onClick={() => handleViewSummary(profile)}
               isAdmin={true}
               onEdit={() => handleEdit(profile)}
               onDelete={() => handleDelete(profile.id)}
+              onViewMap={handleViewOnMap}
             />
           ))}
         </div>
